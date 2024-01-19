@@ -31,7 +31,7 @@ router.get('/', (_req, res) => {
 });
 
 //GET endpoint for individual videos details
-router.get('/:videoId', (_req, res) => {
+router.get('/:videoId', (req, res) => {
     const videos = readVideoData()
     const singleVideo = videos.find((video) => video.id == req.params.videoId) 
 
@@ -44,7 +44,15 @@ router.post("/", (req, res) => {
     const newVideo = {
         id: uuidv4(),
         title: req.body.title,
+        channel: 'Totally Tardy',
+        image:"" ,
         description: req.body.description,
+        views: '20,321',
+        likes: '1,201',
+        duration: '3:55',
+        video: "https://project-2-api.herokuapp.com/stream",
+        timestamp: new Date(),
+        comments: [] ,
     };
 
     // 1. Read the current notes array
