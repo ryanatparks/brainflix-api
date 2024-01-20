@@ -3,11 +3,12 @@ const router = express.Router();
 const app = express();
 const fs = require('fs')
 const { v4: uuidv4 } = require('uuid');
-
 const cors = require('cors')
-app.use(cors());
 
+app.use(cors());
 app.use(express.json());
+
+const videos = require('../data/videos.json');
 
 function readVideoData() {
     const videoData = fs.readFileSync("./data/videos.json");
@@ -38,35 +39,33 @@ router.get('/:videoId', (req, res) => {
     res.json(singleVideo);
 })
 
-// POST endpoint to add a video
+// POST endpoint to add a video 
 router.post("/", (req, res) => {
+
     // Make a new video with a unique ID
     const newVideo = {
         id: uuidv4(),
         title: req.body.title,
         channel: 'Totally Tardy',
-        image:"" ,
+        image: "/public/image9.jpg" ,
         description: req.body.description,
         views: '20,321',
         likes: '1,201',
         duration: '3:55',
         video: "https://project-2-api.herokuapp.com/stream",
         timestamp: new Date(),
-        comments: [] ,
+        comments: [],
     };
 
     // 1. Read the current notes array
     // 2. Add to the notes array
     // 3. Write the entire new notes array to the file
-    const videos = readNotes();
+    const videos = readVideoData()
     videos.push(newVideo);
     fs.writeFileSync("./data/videos.json", JSON.stringify(videos));
 
     // Respond with the note that was created
     res.status(201).json(newVideo);
 });
-
-
-app.get('/api')
 
 module.exports = router;
