@@ -34,8 +34,13 @@ router.get('/', (_req, res) => {
 //GET endpoint for individual videos details
 router.get('/:videoId', (req, res) => {
     const videos = readVideoData()
+    if (!video) {
+        return res.status(500).json({ error: 'Unable to fetch video data'})
+    }
     const singleVideo = videos.find((video) => video.id == req.params.videoId) 
-
+    if (!singleVideo) {
+        return res.status(404).json({error: "Video not found"})
+    }
     res.json(singleVideo);
 })
 
@@ -47,7 +52,7 @@ router.post("/", (req, res) => {
         id: uuidv4(),
         title: req.body.title,
         channel: 'Totally Tardy',
-        image: "/public/image9.jpg" ,
+        image: `http://localhost:${PORT}/image9.jpg` ,
         description: req.body.description,
         views: '20,321',
         likes: '1,201',
