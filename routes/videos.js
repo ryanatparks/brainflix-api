@@ -34,13 +34,9 @@ router.get('/', (_req, res) => {
 //GET endpoint for individual videos details
 router.get('/:videoId', (req, res) => {
     const videos = readVideoData()
-    if (!video) {
-        return res.status(500).json({ error: 'Unable to fetch video data'})
-    }
+    
     const singleVideo = videos.find((video) => video.id == req.params.videoId) 
-    if (!singleVideo) {
-        return res.status(404).json({error: "Video not found"})
-    }
+    
     res.json(singleVideo);
 })
 
