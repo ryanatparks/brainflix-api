@@ -299,18 +299,5 @@
                 "timestamp": 1632496261000
             }
         ]
-    },
-    {
-        "id": "2f88a1e7-cbc6-4d56-8f23-feb63ce3c9de",
-        "title": "Brian learns how to ride a bike",
-        "channel": "Totally Tardy",
-        "image": "http://localhost:8080/images/image9.jpg",
-        "description": "Brian learns how to ride a bike",
-        "views": "20,321",
-        "likes": "1,201",
-        "duration": "3:55",
-        "video": "https://project-2-api.herokuapp.com/stream",
-        "timestamp": "2024-01-20T03:23:12.307Z",
-        "comments": []
     }
 ]

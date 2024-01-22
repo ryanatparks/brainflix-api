@@ -48,7 +48,7 @@ router.post("/", (req, res) => {
         id: uuidv4(),
         title: req.body.title,
         channel: 'Totally Tardy',
-        image: `http://localhost:${PORT}/image9.jpg` ,
+        image: `http://localhost:8080/images/image9.jpg` ,
         description: req.body.description,
         views: '20,321',
         likes: '1,201',
