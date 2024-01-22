@@ -58,9 +58,9 @@ router.post("/", (req, res) => {
         comments: [],
     };
 
-    // 1. Read the current notes array
-    // 2. Add to the notes array
-    // 3. Write the entire new notes array to the file
+    // 1. Read the current videos array
+    // 2. Add newVideo to the videos array
+    // 3. Write the entire new videos array to the file
     const videos = readVideoData()
     videos.push(newVideo);
     fs.writeFileSync("./data/videos.json", JSON.stringify(videos));
